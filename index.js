@@ -9,7 +9,7 @@ if (navigator.getUserMedia) {
       video: { width: 1280, height: 720 }
     },
     function(stream) {
-      var video = document.querySelector(".video");
+      var video = document.querySelector("video");
       video.srcObject = stream;
       video.onloadedmetadata = function(e) {
         video.play();
