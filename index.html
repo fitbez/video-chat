@@ -8,7 +8,26 @@
     <title>Video Chat</title>
 
     <script>
+        navigator.getUserMedia = navigator.getUserMedia;
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({
+                audio: true, video: { width: 1280, height: 720 }
+            },
+                function (stream) {
+                    var video = document.querySelector('video');
+                    video.srcObject = stream;
+                    video.onloadedmetadata = function (e) {
+                        video.play();
+                    };
+                },
+                function (err) {
+                    console.log("The following error occured: " + err.name);
 
+                }
+            );
+        } else {
+            console.log("getUserMedia not supported");
+        }
 
 
     </script>
